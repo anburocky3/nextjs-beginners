@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 const Header = () => {
   const pathName = usePathname();
 
-  console.log(pathName);
-
   const appName = "NextJS";
 
   return (
@@ -34,7 +32,7 @@ const Header = () => {
           <li>
             <Link
               href="/posts"
-              className={` ${pathName === "/posts" ? "active" : ""}`}
+              className={` ${pathName.startsWith("/posts") ? "active" : ""}`}
             >
               Posts
             </Link>

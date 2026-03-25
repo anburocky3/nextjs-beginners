@@ -1,36 +1,196 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Beginners - Commit-Wise Learning Guide
 
-## Getting Started
+This repository was built as a teaching project to introduce Next.js App Router concepts step by step.
+Instead of only showing the final code, this README explains what was taught in each commit so students can learn in sequence.
 
-First, run the development server:
+## Run The Project
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## What Students Learn In This Repo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- App Router basics (`app` folder and route-based pages)
+- Shared UI with layout composition (`Header` and `Footer`)
+- Client components and hooks (`useState`, `useEffect`, `usePathname`)
+- Route metadata (`metadata`, dynamic `generateMetadata`)
+- Dynamic routes (`posts/[postId]`)
+- Data fetching patterns for list and detail pages
 
-## Learn More
+## Commit-Wise Timeline
 
-To learn more about Next.js, take a look at the following resources:
+### 1) `980b7c2` - Initial commit from Create Next App
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+What you taught:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Bootstrapped a fresh Next.js project using `create-next-app`
+- Introduced project structure and the default App Router setup
 
-## Deploy on Vercel
+Key learning points:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- How a Next.js app starts
+- Where `app/layout` and `app/page` fit in routing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+### 2) `c1e6b91` - feat: add Header, Footer, and About page components
+
+What you taught:
+
+- Built reusable layout pieces (`Header`, `Footer`)
+- Added a dedicated About page route
+
+Key learning points:
+
+- Reusable components in `src/components`
+- Basic static routing with App Router (`/about`)
+
+Likely files touched:
+
+- `src/components/Header.jsx`
+- `src/components/Footer.jsx`
+- `src/app/(site)/about/page.jsx`
+- `src/app/layout.jsx`
+
+---
+
+### 3) `a7e8fbd` - feat(Header): enhance navigation with active link styling
+
+What you taught:
+
+- Improved navigation UX by highlighting active menu links
+- Used `usePathname` from `next/navigation` inside a client component
+
+Key learning points:
+
+- Why `"use client"` is needed for router hooks
+- Route-aware UI patterns
+
+Likely files touched:
+
+- `src/components/Header.jsx`
+
+---
+
+### 4) `c8cc842` - feat(metadata): add metadata for About and Contact pages
+
+What you taught:
+
+- Added per-page metadata for SEO and browser titles
+
+Key learning points:
+
+- Page-level `metadata` export in App Router
+- Title/description customization by route
+
+Likely files touched:
+
+- `src/app/(site)/about/page.jsx`
+- `src/app/(site)/contact/page.jsx`
+
+---
+
+### 5) `b1dd5d3` - refactor: restructure components and update imports
+
+What you taught:
+
+- Performed codebase cleanup to improve maintainability
+- Reorganized component structure and fixed import paths
+
+Key learning points:
+
+- Refactoring without changing behavior
+- Cleaner folder architecture for scaling
+
+Likely files touched:
+
+- `src/components/*`
+- `src/app/layout.jsx`
+- related route files with updated imports
+
+---
+
+### 6) `0ef139f` - feat: recreate About and Contact pages with components
+
+What you taught:
+
+- Rebuilt page content using explicit component composition
+- Added interactive Contact page behavior through a client component
+
+Key learning points:
+
+- Server page + client child component pattern
+- Local state with `useState` in a small interactive UI (`PukeCounter`)
+
+Likely files touched:
+
+- `src/app/(site)/about/page.jsx`
+- `src/app/(site)/contact/page.jsx`
+- `src/app/(site)/contact/PukeCounter.jsx`
+
+---
+
+### 7) `a472df0` - feat(Posts): add PostList component and update Posts page
+
+What you taught:
+
+- Created a Posts listing route
+- Fetched remote data and rendered a list of post cards
+- Linked each item to a dynamic detail route
+
+Key learning points:
+
+- `useEffect` + `useState` for client-side data fetching
+- Building list/detail navigation flow
+
+Likely files touched:
+
+- `src/app/(site)/posts/page.jsx`
+- `src/app/(site)/posts/PostList.jsx`
+
+---
+
+### 8) `437924e` - feat(PostDetail): add PostDetail component and page
+
+What you taught:
+
+- Implemented dynamic route details at `/posts/[postId]`
+- Loaded single post data by ID
+- Generated dynamic metadata from fetched content
+
+Key learning points:
+
+- Dynamic segments in App Router
+- Combining `generateMetadata` with detail-page fetching
+
+Likely files touched:
+
+- `src/app/(site)/posts/[postId]/page.jsx`
+- `src/app/(site)/posts/[postId]/PostDetail.jsx`
+
+## Suggested Learning Flow For Students
+
+1. Start at commit `980b7c2` to understand the scaffold.
+2. Move through commits in order and run the app after each checkout.
+3. Compare changes using `git show <commit-hash>`.
+4. After commit `437924e`, trace the full user flow:
+   - Home -> Posts list -> Post detail
+   - Observe metadata/title changes per route
+
+## Useful Git Commands For Teaching
+
+```bash
+git log --oneline --reverse
+git show <commit-hash>
+git checkout <commit-hash>
+```
+
+When finished exploring an older commit:
+
+```bash
+git checkout main
+```

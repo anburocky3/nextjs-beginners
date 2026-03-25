@@ -1,6 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+  const pathName = usePathname();
+
+  console.log(pathName);
+
   const appName = "NextJS";
 
   return (
@@ -11,18 +18,24 @@ const Header = () => {
         </Link>
         <ul className="flex items-center space-x-10 text-sm">
           <li>
-            <Link href="/" className="hover:text-orange-300">
+            <Link href="/" className={` ${pathName === "/" ? "active" : ""}`}>
               Home
             </Link>
           </li>
           <li>
-            <Link href="/about" className="hover:text-orange-300">
+            <Link
+              href="/about"
+              className={` ${pathName === "/about" ? "active" : ""}`}
+            >
               About
             </Link>
           </li>
 
           <li>
-            <Link href="#contact" className="hover:text-orange-300">
+            <Link
+              href="/contact"
+              className={` ${pathName === "/contact" ? "active" : ""}`}
+            >
               Contact
             </Link>
           </li>

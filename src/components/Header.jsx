@@ -33,6 +33,15 @@ const Header = () => {
 
           <li>
             <Link
+              href="/posts"
+              className={` ${pathName === "/posts" ? "active" : ""}`}
+            >
+              Posts
+            </Link>
+          </li>
+
+          <li>
+            <Link
               href="/contact"
               className={` ${pathName === "/contact" ? "active" : ""}`}
             >

@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Contact us",
+};
+
 export default function ContactPage() {
   return (
     <div className="p-4">

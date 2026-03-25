@@ -10,7 +10,11 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Learning Next.js",
+  // title: "Learning Next.js",
+  title: {
+    default: "Learning Next.js | NextJS",
+    template: "%s | NextJS",
+  },
   description:
     "A simple Next.js application to learn the basics of the framework.",
 };
